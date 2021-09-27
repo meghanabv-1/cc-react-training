@@ -1,0 +1,120 @@
+0: Is JavaScript single threaded or multithreaded? What does it mean to be any?
+
+ans: JavaScript is a single threaded language because of only one call stack is used to execute the program.
+
+1: What are promises? Why are they used?
+
+ans: promises can handle multiple asynchronous operations easily and provide better error handling than callbacks and events.
+
+2: What do async/await do? Explain it in your own words.
+
+ans: Async/await helps with writing completely synchronous-looking code while performing asynchronous tasks.
+     await is used to wait for a promise to resolve or reject, and can only be used inside an asynchronous function.
+
+3: How do we catch errors in async functions?
+
+ans: Handling errors with async/await and promises. if you do anything else inside your try block, any exceptions thrown will be caught.
+
+4: What do async functions return?
+
+ans: Async functions always return a promise.
+
+5: What do then() consumers in promises return?
+
+ans: The then() method returns a Promise. It takes up to two arguments:
+ callback functions for the success and failure cases of the Promise.
+
+6: Write the explicit equivalent of Promise.resolve(100);
+
+ans: let promise = Promise.resolve(100);
+promise.then(function(v) {
+  console.log(v); // 1
+});
+
+7: What are the states a promise can be in?
+
+ans: pending: initial state, neither fulfilled nor rejected. 
+     fulfilled: the operation was completed successfully.
+     rejected: the operation failed.
+
+8: What happens if neither resolve nor reject is called within a promise?
+
+ans:failing to resolve or reject a promise just fails to ever change the state from "pending" to anything else. 
+
+9: What happens if multiple resolve or reject is called within a promise?
+
+ans:A promise can be only resolved once, another tries will do nothing (no error, no warning). 
+just pass your function as a callback and invoke it as many times you wish!
+
+10: What does the finally() method on promise do? Provide your explanation.
+
+ans: The finally() method returns a Promise . 
+     When the promise is either fulfilled or rejected, the specified callback function is executed. 
+     This provides a way for code to be run whether the promise was fulfilled successfully or rejected once the Promise has been dealt with
+
+11: What are microtasks in JS?
+
+ans: The queue is first-in-first-out: tasked enqueued first are run first. execution of a task is initiated only whennothing else is running.
+
+12: Write a simple print() function that accepts a callback, which gets called after 3 seconds. The callback function could be anything that prints out on the screen.
+
+ans: const message = function() {  
+    console.log("This message is shown after 3 seconds");
+}
+ 
+setTimeout(message, 3000);
+
+13: Delay with a promise
+
+
+We know that setTimeout() uses a callback.
+Create a promise based alternative.
+
+The function named delay(ms) should return a promise.
+
+We should be able to achieve something like this:
+
+delay(3000).then(() => alert('Should alert after 3 seconds'))
+
+ans: 
+
+function delay(ms) {
+    return new Promise((res, rej) => {
+        setTimeout(() => res('Resolved'), ms)
+    })
+}
+
+
+14: Consume the following promise using `await`.
+
+let promise = new Promise((res,rej) => {
+    setTimeout(() => res("Resolved!"),3000)
+} );
+
+promise.then((res) => alert("Response value is: " + res)); // this line needs to get replaced.
+
+ans:
+async function getResponse() {
+  const res = await promise;
+  alert("Response value is: " + res)
+}
+getResponse()
+
+
+15: What is the difference between the following two lines of code:
+
+promise.then(f1).catch(f2);
+
+and
+
+promise.then(f1, f2);
+
+Provide an explanation for your answer.
+
+ans:
+    promise
+  .then(success, error);
+
+  promise
+  .then(success)
+  .catch(error);
