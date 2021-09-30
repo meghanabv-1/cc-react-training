@@ -1,0 +1,6 @@
+2: What are the limitations of props? 
+( Bonus: Attempt to write an explanation as to how to address this limitation. There are plenty of explanations out there)
+
+ans: props are set by parent and passed to child components and they are fixed throughout the component. we can not pass variables
+back to child component to parent component.
+Props are immutable so we cannot modify the props from inside the component

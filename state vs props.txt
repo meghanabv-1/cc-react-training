@@ -1,0 +1,31 @@
+1: Write a brief about the differences between props and state? When do we use each? 
+
+
+State:
+
+states are mutable.
+state changes can be asynchronous
+states are associated with the individual components can't be used by other components.
+states are initialize on component mount.
+states are used for rendering dynamic changes within component.
+State is limited to our current component 
+We can pass the state of the current component as prop to other components.
+state can be modified using this.setstate
+
+
+props:
+
+props are immutable.
+props are read-only
+you can pass props between components.
+props are set by parent and passed to child components and they are fixed throughout the component
+we have stateless components which only have props and not internal state.
+if you want to change props you can do from parent component and then pass it to child components.
+props cannot be modified
+
+
+State and Props both hold information that influences the output of render, 
+they are different in one important way: props get passed to the component. 
+whereas state is managed within the component (similar to variables declared within a function).
+
+
