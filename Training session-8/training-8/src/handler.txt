@@ -1,0 +1,34 @@
+1: What is the difference between composition and inheritance? Which paradigm is preferred in React?  Write a brief note about it in your own words.
+
+Ans: Inheritance
+In Inheritance one class inherits properties and methods of another class. 
+This is useful in code reusability
+it was difficult to add new behavior because the derived component was inheriting all the
+properties of parent class and it was quite difficult to add new behavior.
+
+Comosition
+ Adding behavior is so simple in the composition that we just need to change the code in component only.
+ We can add behaviors of our choice to any component without causing any trouble.
+
+2: In what cases do we need to 'lift the state up'?
+
+Ans:  every component in React has its own state. 
+      Because of this sometimes data can be redundant and inconsistent. 
+      So, by Lifting up the state we make the state of the parent component as a single source of truth 
+      and pass the data of the parent in its children.
+
+For Ex: If we have 2 components in our App. 
+A -> B where, A is parent of B. keeping the same data in both Component A and B might cause inconsistency of data. 
+
+3: What is a handler function. When do we use it?
+
+Ans:
+    Event handlers determine what action is to be taken whenever an event is fired. 
+    This could be a button click or a change in a text input.
+    
+    Synthetic events
+     It has the same interface as the browser’s native event
+
+The React onClick event handler enables us to call a function and trigger an action when a user clicks an element,
+such as a button, in our app.
+
