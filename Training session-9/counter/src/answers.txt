@@ -1,0 +1,80 @@
+1:What are controlled / uncontrolled components? Why do we use controlled components?
+
+Ans:Controller component
+ In a controlled component, the form data is handled by the state within the component.
+ The state within the component serves as “the single source of truth” for the input elements 
+ that are rendered by the component.
+
+uncontrolled component
+
+Uncontrolled components act more like traditional HTML form elements. 
+The data for each input element is stored in the DOM, not in the component. 
+Instead of writing an event handler for all of our state updates, we use a ref to retrieve values from the DOM.
+
+2: What are side effects? Write a note about them.
+
+Ans:
+Side effects are basically anything that affects something outside of the scope of the current function 
+that’s being executed.
+
+API requests to our backend service
+Calls to our authentication service
+Error tracking calls to Sentry
+
+3: What is the uni-directional data flow in React?
+
+Ans: 
+the data has one, and only one way to be transferred to other parts of the application.
+this means child components are not able to update the data that is coming from the parent component.
+
+
+4: List down and explain the 3 ways in which useEffect() hook can be used, with relevant examples.
+
+Ans :
+
+->   componentDidMount
+->   componentDidUpdate
+->   componentWillUnmount
+
+componentDidMount
+
+function Counter() {
+  const [count, setCount] = useState(localStorage.getItem("count") || 0);
+
+  useEffect(() => {
+    localStorage.setItem("count", count);
+  }, [count]);
+  return (
+    <div>
+      <h3>You clicked {count} times</h3>
+      <button onClick={() => setCount(count + 1)}>+</button>
+      <button onClick={() => setCount(count - 1)}>-</button>
+    </div>
+  );
+}
+
+
+componentDidUpdate
+
+function Greate({ name }) {
+  const message = `Hello, ${name}!`;
+  useEffect(() => {
+    document.title = `Greetings to ${name}`;
+  }, [name]);
+  return <div>{message} </div>;
+}
+
+componentWillUnmount
+
+function RepeatMessage({ message }) {
+  useEffect(() => {
+    const id = setInterval(() => {
+      console.log(message);
+    }, 2000);--------------------------------------->componentDidMount
+    return () => {
+      clearInterval(id);
+    };----------------------------------------------->componentWillUnmount
+  }, [message]);------------------------------------>componentDidUpdate
+  return 
+  <div>I'm logging to console "{message}"</div>;
+}
